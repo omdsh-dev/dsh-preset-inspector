@@ -37,7 +37,7 @@ dsh plugin --profile web add ./dsh-preset-inspector-*.tgz
 
 ## 用起来是什么样
 
-侧栏底部的 Preset Inspector 图标打开面板。也可以在 **Settings → Agent presets** 的任意 preset 卡片上点「检查」，直接打开该 preset。
+在 **Settings → Agent presets** 的任意 preset 卡片上点「检查」打开面板。面板内可切换 preset，不需要另开入口。
 
 ![Settings 入口](docs/preview/settings-entry.png)
 
@@ -63,7 +63,7 @@ dsh plugin --profile web add ./dsh-preset-inspector-*.tgz
 | 来源显示 | 「显示来源」按需显示段名/来源/包名和工具提供方 |
 | 插件树 | preset 的插件行、分类、工具、layers |
 | 补丁层 | bundle → profile → home 的补丁栈与 ops |
-| 官方设置入口 | Settings → Agent presets 卡片上的「检查」 |
+| 官方设置入口 | Settings → Agent presets 卡片上的「检查」（唯一入口，不占侧栏） |
 | 兼容性 | 浅/深色、中/英、390px 窄屏、键盘焦点 |
 
 ## 已知限制
@@ -74,7 +74,7 @@ dsh plugin --profile web add ./dsh-preset-inspector-*.tgz
 - `config` patch 是整体替换，不是按 key 合并。
 - 静态扫描只作为兜底，仍是启发式，复杂运行时拼接可能漏/多列。
 - 同一 group 内重复 id 的行用 `#2` 区分；删除前一个同名行时序号会前移，极端情况下来源会显示为 patch。
-- Settings 卡片上的「检查」是 DOM 装饰：官方 0.2.1 没有 per-card slot，官方卡片结构变化时可能失效；侧栏入口仍可用。
+- Settings 卡片上的「检查」是 DOM 装饰：官方 0.2.1 没有 per-card slot，官方卡片结构变化时入口会暂时消失（插件不再提供侧栏备用入口）。面板挂在 `shell.overlay`，打开事件监听和卡片装饰都由它维护。
 - dry-run 在 `0.2.1-rc.1` 实测不留下新 session 文件，但依赖 factory rollback 语义；升级 dsh 后需要重新验证。
 
 更多实现细节与验证证据见 [docs/engineering-notes.md](docs/engineering-notes.md)。

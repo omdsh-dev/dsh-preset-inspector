@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.20.0
+
+- Remove the sidebar-footer entry button. The official Agent presets settings
+  card is now the only entry; the panel mounts in `shell.overlay` and renders
+  nothing while closed.
+
 ## 0.19.1
 
 - Remove the hardcoded “provider returns text” trigger claim from context details.

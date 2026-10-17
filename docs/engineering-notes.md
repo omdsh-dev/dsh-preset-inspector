@@ -42,7 +42,15 @@ not a per-card action slot in `0.2.1`. The client decorates
 `li[data-agent-preset-id]` cards with an “Inspect” button and dispatches
 `preset-inspector:open`. A MutationObserver re-applies the decoration after
 React renders. This is a temporary bridge until an upstream card-action slot
-exists; the sidebar footer entry is the fallback.
+exists; it is the plugin's only entry point by design.
+
+### Overlay host
+
+The client registers one `shell.overlay` list entry (`preset-inspector`) and
+renders nothing while closed. That entry owns the open event listener, the
+settings-card decoration, and the portaled dialog, so no persistent sidebar
+button is needed. The frame-wide overlay layer is click-through; entries opt
+back in, and the panel portals to `document.body` when react-dom is present.
 
 ## Verification evidence
 
@@ -54,6 +62,10 @@ Isolated `DSH_HOME` on dsh `0.2.1-rc.1`:
 - dry-run `standard`: 30 tools / 20 sections / 6 contexts; no new session file.
 - Settings page: 4 cards → 4 “Inspect” buttons; clicking minimal opens the
   inspector with minimal selected.
+- 0.20.0 removal: sidebar footer exposes no inspector button (`.dpi-trigger`
+  count 0); the 4 settings cards keep 4 “Inspect” buttons; clicking standard
+  opens the panel with standard selected; closing it returns focus to the
+  card button; no console or page errors.
 - Light/dark themes, Chinese/English, 390px width, keyboard focus and drawer
   focus restore verified.
 - `node scripts/check.mjs`: package contract + dictionary parity.

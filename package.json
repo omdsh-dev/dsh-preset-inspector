@@ -1,6 +1,6 @@
 {
   "name": "dsh-preset-inspector",
-  "version": "0.19.1",
+  "version": "0.20.0",
   "description": "Agent preset 检查器：看清一个 preset 的每一行来自哪一层补丁、包是什么、配置是什么（DeepSeek Harness 插件）",
   "repository": {
     "type": "git",
