@@ -1,0 +1,66 @@
+{
+  "name": "dsh-preset-inspector",
+  "version": "0.19.1",
+  "description": "Agent preset 检查器：看清一个 preset 的每一行来自哪一层补丁、包是什么、配置是什么（DeepSeek Harness 插件）",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/omdsh-dev/dsh-preset-inspector"
+  },
+  "homepage": "https://github.com/omdsh-dev/dsh-preset-inspector#readme",
+  "bugs": {
+    "url": "https://github.com/omdsh-dev/dsh-preset-inspector/issues"
+  },
+  "icon": "./icon.svg",
+  "type": "module",
+  "main": "index.mjs",
+  "exports": {
+    ".": "./index.mjs",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "files": [
+    "index.mjs",
+    "lib/client.js",
+    "lib/scan.mjs",
+    "lib/report.mjs",
+    "lib/provenance.mjs",
+    "cordis.patch.yml",
+    "icon.svg",
+    "locale/*.json",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "docs/engineering-notes.md",
+    "docs/preview/*.png"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "check": "node scripts/check.mjs && node --test"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "preset",
+    "inspector",
+    "provenance"
+  ],
+  "license": "MIT",
+  "author": "vlln",
+  "engines": {
+    "node": ">=22"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web"
+    },
+    "compatibility": {
+      "dshReleases": {
+        "0.2.1-rc.1": "compatible"
+      }
+    }
+  }
+}

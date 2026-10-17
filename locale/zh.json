@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Preset 检查器",
+    "description": "看清 agent preset 的每一行来自哪一层、配置了什么。"
+  }
+}

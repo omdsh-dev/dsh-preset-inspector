@@ -1,0 +1,5 @@
+# Bundle patch layer: one insert row loads this package's host half; the
+# `dsh.client` declaration in package.json loads lib/client.js in the browser.
+- insert:
+    - id: preset-inspector
+      name: dsh-preset-inspector
